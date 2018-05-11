@@ -1,6 +1,6 @@
 import { browser } from 'protractor';
-import { Before, After, Status } from "cucumber";
-import * as fs from 'fs';
+import { Before, After, Status } from 'cucumber';
+import {  } from 'cucumber-expressions';
 
 Before(() => {
     return browser.get('/');
@@ -8,7 +8,7 @@ Before(() => {
 
 After(async function(scenario) {
     if (scenario.result.status === Status.FAILED) {
-        // screenShot is a base-64 encoded PNG
+
         const screenShot = await browser.takeScreenshot();
         this.attach(screenShot, 'image/png');
     }

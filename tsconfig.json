@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES2017",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "strict": true,
+    "allowJs": true,
+    "outDir": "dist",
+    "typeRoots": [
+      "./node_modules/@types"
+    ]
+  },
+  "include": ["./**/*.ts"],
+  "exclude": [
+    "node_modules/**",
+    "dist"
+  ],
+  "types": [
+    "node",
+    "cucumber",
+    "selenium-webdriver",
+    "protractor"
+  ]
+}

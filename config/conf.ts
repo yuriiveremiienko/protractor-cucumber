@@ -1,12 +1,10 @@
 import { Config } from 'protractor';
-import { Reporter } from '../utilities/reporter';
-const jsonReports = process.cwd() + '/reports/json';
 
 export let config: Config = {
     framework: 'custom',
     frameworkPath: require.resolve('protractor-cucumber-framework'),
     cucumberOpts: {
-        format: 'json:./reports/json/cucumber_report.json',
+        format: './utilities/reporter.ts',
         require: ['../stepdefinitions/*.step.ts', '../utilities/*.ts'],
         strict: true
     },
@@ -22,10 +20,15 @@ export let config: Config = {
     allScriptsTimeout: 300000,
     SELENIUM_PROMISE_MANAGER: false,
     noGlobals: true,
-    onPrepare: () => {
-        Reporter.createDirectory(jsonReports);
+
+    beforeLaunch() {
+        require('rmdir')('./reports');
     },
-    onComplete: () => {
-        Reporter.createHTMLReport();
+    onComplete() {
+        const allureResultsPath = './reports/allure-results';
+        const allureReportPath = './reports/allure-report';
+
+        return require('child_process')
+            .exec(`allure generate ${allureResultsPath} -o ${allureReportPath} --clean`);
     },
 };

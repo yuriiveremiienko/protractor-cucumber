@@ -1,5 +1,5 @@
 import { browser } from 'protractor';
-import { Before, After, Status } from 'cucumber';
+import { Before, After } from 'cucumber';
 import {  } from 'cucumber-expressions';
 
 Before(() => {
@@ -7,7 +7,7 @@ Before(() => {
 });
 
 After(async function(scenario) {
-    if (scenario.result.status === Status.FAILED) {
+    if (scenario.result.status === 'failed') {
 
         const screenShot = await browser.takeScreenshot();
         this.attach(screenShot, 'image/png');

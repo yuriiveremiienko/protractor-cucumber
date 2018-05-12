@@ -14,10 +14,12 @@
     "cucumber": "^4.1.0",
     "cucumber-expressions": "^5.0.17",
     "cucumber-html-reporter": "^4.0.2",
+    "cucumberjs-allure2-reporter": "^1.0.5",
     "mkdirp": "^0.5.1",
     "moment": "^2.20.1",
     "protractor": "^5.2.2",
     "protractor-cucumber-framework": "^5.0.0",
+    "rmdir": "^1.2.0",
     "ts-node": "^6.0.2",
     "tslint": "^5.8.0",
     "typescript": "^2.6.2"
